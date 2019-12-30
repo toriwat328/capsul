@@ -1990,15 +1990,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {}
 });
@@ -37844,7 +37835,7 @@ var render = function() {
                         "router-link",
                         { attrs: { tag: "a", to: "/", exact: "" } },
                         [
-                          _c("a", { staticClass: "navbar-item" }, [
+                          _c("a", { staticClass: "navbar-item anchor an" }, [
                             _vm._v("Home")
                           ])
                         ]
@@ -37854,7 +37845,7 @@ var render = function() {
                         "router-link",
                         { attrs: { tag: "a", to: "/about", exact: "" } },
                         [
-                          _c("a", { staticClass: "navbar-item" }, [
+                          _c("a", { staticClass: "navbar-item anchor an" }, [
                             _vm._v("About")
                           ])
                         ]
@@ -37864,7 +37855,7 @@ var render = function() {
                         "router-link",
                         { attrs: { tag: "a", to: "/map", exact: "" } },
                         [
-                          _c("a", { staticClass: "navbar-item" }, [
+                          _c("a", { staticClass: "navbar-item anchor an" }, [
                             _vm._v("Map")
                           ])
                         ]
@@ -38697,15 +38688,19 @@ var render = function() {
               { staticClass: "navbar-start" },
               [
                 _c("router-link", { attrs: { to: "/", exact: "" } }, [
-                  _c("a", { staticClass: "navbar-item" }, [_vm._v("Home")])
+                  _c("a", { staticClass: "navbar-item an" }, [_vm._v("Home")])
                 ]),
                 _vm._v(" "),
                 _c("router-link", { attrs: { to: "/about", exact: "" } }, [
-                  _c("a", { staticClass: "navbar-item" }, [_vm._v("About")])
+                  _c("a", { staticClass: "navbar-item", attrs: { an: "" } }, [
+                    _vm._v("About")
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("router-link", { attrs: { to: "/map", exact: "" } }, [
-                  _c("a", { staticClass: "navbar-item" }, [_vm._v("Map")])
+                  _c("a", { staticClass: "navbar-item", attrs: { an: "" } }, [
+                    _vm._v("Map")
+                  ])
                 ])
               ],
               1

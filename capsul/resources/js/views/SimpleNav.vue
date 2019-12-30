@@ -16,13 +16,13 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
         <router-link  to="/" exact>
-            <a class="navbar-item">Home</a>
+            <a class="navbar-item an">Home</a>
         </router-link>
         <router-link  to="/about" exact>
-            <a class="navbar-item">About</a>
+            <a class="navbar-item" an>About</a>
         </router-link>
         <router-link to="/map" exact>
-            <a class="navbar-item">Map</a>
+            <a class="navbar-item" an>Map</a>
         </router-link>
           </div>
 

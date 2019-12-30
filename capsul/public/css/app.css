@@ -41,6 +41,10 @@ div.navbar-start {
   margin-top: 25px;
 }
 
+.anchor {
+  margin-top: 20px;
+}
+
 .map {
   width: 400px;
   margin-top: 50px;
@@ -104,5 +108,9 @@ div.container.mapposition {
 .photoview {
   width: 58%;
   height: 950px;
+}
+
+.textt {
+  height: 700px;
 }
 

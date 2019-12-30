@@ -25,7 +25,7 @@
 
 
                     <router-view name="header"></router-view>
-                    
+
 
 
 
@@ -33,6 +33,8 @@
 
 
         </div>
+
+        @include('layouts.footer')
 
         <script src="/js/app.js"></script>
     </body>

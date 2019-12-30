@@ -16,24 +16,15 @@
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
-                <!-- <a class="navbar-item is-active">
-                  Home
-                </a>
-                <a class="navbar-item">
-                  About
-                </a>
-                <a class="navbar-item">
-                  Map
-                </a> -->
 
                     <router-link tag="a" to="/" exact>
-                        <a class="navbar-item">Home</a>
+                        <a class="navbar-item anchor an">Home</a>
                     </router-link>
                     <router-link tag="a" to="/about" exact>
-                        <a class="navbar-item">About</a>
+                        <a class="navbar-item anchor an">About</a>
                     </router-link>
                     <router-link tag="a" to="/map" exact>
-                        <a class="navbar-item">Map</a>
+                        <a class="navbar-item anchor an">Map</a>
                     </router-link>
 
                 <span class="navbar-item">
