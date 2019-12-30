@@ -1,0 +1,83 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Damion');
+
+// Variables
+@import 'variables';
+
+// // Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+
+.hero-foot {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-section {
+    margin-top: 50px;
+}
+
+.hero {
+    background-color: red;
+}
+
+
+
+h1.title{
+    font-family: "Damion", sans-serif;
+    font-size: 80px;
+    color: #515151;
+    text-align: center;
+}
+
+h2.subtitle {
+    font-family: "Nunito", sans-serif;
+    font-weight: 200;
+    color: white;
+    font-size: 20px;
+}
+
+#logo {
+    width: 100%;
+    fill: #515151;
+}
+
+a {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+
+}
+
+div.navbar-start {
+    margin-top: 25px;
+}
+
+.map {
+    width: 400px;
+    margin-top: 50px;
+    // transform: rotate(20deg) translateY(-300px);
+}
+
+#East_Harlem, #Morningside_Heights, #Upper_West_Side, #Central_Park, #Harlem, #Upper_East_Side, #Lenox_Hill, #Hell_s_Kitchen, #Theater_District, #Midtown, #Chelsea, #Nomad, #Kips_Bay, #West_Village, #Greenwich_Village, #East_Village, #Soho_ChinaTown_Tribeca, #Lower_East_Side, #Financial_District{
+    fill: #515151;
+
+
+}
+
+#East_Harlem:hover, #Morningside_Heights:hover, #Upper_West_Side:hover, #Central_Park:hover, #Harlem:hover, #Upper_East_Side:hover, #Lenox_Hill:hover, #Hell_s_Kitchen:hover, #Theater_District:hover, #Midtown:hover, #Chelsea:hover, #Nomad:hover, #Kips_Bay:hover, #West_Village:hover, #Greenwich_Village:hover, #East_Village:hover, #Soho_ChinaTown_Tribeca:hover, #Lower_East_Side:hover, #Financial_District:hover {
+    cursor: pointer;
+    fill: orange;
+}
+
+div.container.mapposition {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: 50px;
+    margin-right: 0px;
+}
+
+.photoview {
+    // border: 5px solid orange;
+    width: 58%;
+    height: 950px;
+}
