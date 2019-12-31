@@ -2007,6 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SimpleNav_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SimpleNav.vue */ "./resources/js/views/SimpleNav.vue");
 /* harmony import */ var _NYMap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NYMap.vue */ "./resources/js/views/NYMap.vue");
+/* harmony import */ var _Photoside_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Photoside.vue */ "./resources/js/views/Photoside.vue");
 //
 //
 //
@@ -2024,17 +2025,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     SimpleNav: _SimpleNav_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    NYMap: _NYMap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    NYMap: _NYMap_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Photoside: _Photoside_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  mounted: function mounted() {}
+  data: function data() {
+    return {
+      hoodFig: 'Neighborhoods'
+    };
+  },
+  mounted: function mounted() {},
+  methods: {
+    updateHeader: function updateHeader(clickedHeader) {
+      this.hoodFig = clickedHeader;
+    }
+  }
 });
 
 /***/ }),
@@ -2135,7 +2145,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {}
+  mounted: function mounted() {},
+  data: function data() {
+    return {};
+  },
+  methods: {
+    updateView: function updateView(e) {
+      var name = e.path[1].dataset.name;
+      this.$emit('headerChange', name);
+    }
+  }
 });
 
 /***/ }),
@@ -2160,6 +2179,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Photoside.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Photoside.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    hoodFig: {
+      type: String
+    }
+  },
+  data: function data() {
+    return {
+      photos: []
+    };
+  },
+  methods: {},
+  created: function created() {
+    var _this = this;
+
+    axios.get('/photos').then(function (_ref) {
+      var data = _ref.data;
+      return _this.photos = data;
+    });
+  }
 });
 
 /***/ }),
@@ -37985,29 +38059,27 @@ var render = function() {
     [
       _c("SimpleNav"),
       _vm._v(" "),
-      _c("div", { staticClass: "container mapposition" }, [
-        _c("div", [_c("NYMap")], 1),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("hr")
-      ])
+      _c(
+        "div",
+        { staticClass: "container mapposition" },
+        [
+          _c("NYMap", {
+            on: {
+              headerChange: function($event) {
+                return _vm.updateHeader($event)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("Photoside", { attrs: { hoodFig: _vm.hoodFig } })
+        ],
+        1
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "photoview" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("East Harlem")]),
-      _vm._v(" "),
-      _c("hr")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38030,14 +38102,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "map" }, [
-    _c("svg", { attrs: { viewBox: "0 0 500 750" } }, [
+    _c("svg", { attrs: { viewBox: "0 0 300 750" } }, [
       _c("defs"),
       _vm._v(" "),
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Financial_District", "data-name": "Financial District" }
+          attrs: {
+            id: "Financial_District",
+            "data-name": "Financial District"
+          },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38061,8 +38140,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Lower_East_Side", "data-name": "Lower East Side" }
+          attrs: { id: "Lower_East_Side", "data-name": "Lower East Side" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38086,10 +38169,14 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
           attrs: {
             id: "Soho_ChinaTown_Tribeca",
             "data-name": "Soho/ChinaTown/Tribeca"
+          },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
           }
         },
         [
@@ -38114,8 +38201,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "East_Village", "data-name": "East Village" }
+          attrs: { id: "East_Village", "data-name": "East Village" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38131,8 +38222,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Greenwich_Village", "data-name": "Greenwich Village" }
+          attrs: { id: "Greenwich_Village", "data-name": "Greenwich Village" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38148,8 +38243,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "West_Village", "data-name": "West Village" }
+          attrs: { id: "West_Village", "data-name": "West Village" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38165,8 +38264,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Kips_Bay", "data-name": "Kips Bay" }
+          attrs: { id: "Kips_Bay", "data-name": "Kips Bay" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38189,7 +38292,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "g",
-        { staticClass: "off", attrs: { id: "Nomad", "data-name": "Nomad" } },
+        {
+          attrs: { id: "Nomad", "data-name": "Nomad" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
+        },
         [
           _c("path", {
             attrs: {
@@ -38220,8 +38330,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Chelsea", "data-name": "Chelsea" }
+          attrs: { id: "Chelsea", "data-name": "Chelsea" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38237,8 +38351,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Midtown", "data-name": "Midtown" }
+          attrs: { id: "Midtown", "data-name": "Midtown" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38262,8 +38380,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Theater_District", "data-name": "Theater District" }
+          attrs: { id: "Theater_District", "data-name": "Theater District" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38287,8 +38409,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Hell_s_Kitchen", "data-name": "Hell's Kitchen" }
+          attrs: { id: "Hell_s_Kitchen", "data-name": "Hell's Kitchen" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38304,8 +38430,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Lenox_Hill", "data-name": "Lenox Hill" }
+          attrs: { id: "Lenox_Hill", "data-name": "Lenox Hill" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38329,8 +38459,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Upper_East_Side", "data-name": "Upper East Side" }
+          attrs: { id: "Upper_East_Side", "data-name": "Upper East Side" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38354,8 +38488,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "East_Harlem", "data-name": "East Harlem" }
+          attrs: { id: "East_Harlem", "data-name": "East Harlem" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38387,8 +38525,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Central_Park", "data-name": "Central Park" }
+          attrs: { id: "Central_Park", "data-name": "Central Park" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38411,7 +38553,14 @@ var render = function() {
       _vm._v(" "),
       _c(
         "g",
-        { staticClass: "off", attrs: { id: "Harlem", "data-name": "Harlem" } },
+        {
+          attrs: { id: "Harlem", "data-name": "Harlem" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
+        },
         [
           _c("path", {
             attrs: {
@@ -38442,8 +38591,12 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
-          attrs: { id: "Upper_West_Side", "data-name": "Upper West Side" }
+          attrs: { id: "Upper_West_Side", "data-name": "Upper West Side" },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
+          }
         },
         [
           _c("path", {
@@ -38471,10 +38624,14 @@ var render = function() {
       _c(
         "g",
         {
-          staticClass: "off",
           attrs: {
             id: "Morningside_Heights",
             "data-name": "Morningside Heights"
+          },
+          on: {
+            click: function($event) {
+              return _vm.updateView($event)
+            }
           }
         },
         [
@@ -38536,6 +38693,60 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "photoview" }, [
+    _c("h1", { staticClass: "title hood" }, [_vm._v(_vm._s(_vm.hoodFig))]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "photocontainer" },
+      _vm._l(_vm.photos, function(photo) {
+        return _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-image" }, [
+            _c("figure", { staticClass: "image is-4by3" }, [
+              _c("img", { attrs: { src: photo.image, alt: "image" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "content" }, [
+            _c("p", [
+              _vm._v(
+                "by " +
+                  _vm._s(photo.user.name) +
+                  " in the " +
+                  _vm._s(photo.decade)
+              )
+            ])
+          ])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -54440,6 +54651,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Photography_vue_vue_type_template_id_a1be7a64___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Photography_vue_vue_type_template_id_a1be7a64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Photoside.vue":
+/*!******************************************!*\
+  !*** ./resources/js/views/Photoside.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Photoside.vue?vue&type=template&id=2a7bd7fa& */ "./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa&");
+/* harmony import */ var _Photoside_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Photoside.vue?vue&type=script&lang=js& */ "./resources/js/views/Photoside.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Photoside_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Photoside.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Photoside.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/views/Photoside.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Photoside_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Photoside.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Photoside.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Photoside_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Photoside.vue?vue&type=template&id=2a7bd7fa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Photoside.vue?vue&type=template&id=2a7bd7fa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Photoside_vue_vue_type_template_id_2a7bd7fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

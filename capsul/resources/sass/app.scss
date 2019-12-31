@@ -57,7 +57,7 @@ div.navbar-start {
 }
 
 .map {
-    width: 400px;
+    width: 250px;
     margin-top: 50px;
     // transform: rotate(20deg) translateY(-300px);
 }
@@ -87,10 +87,40 @@ div.container.mapposition {
 
 .photoview {
     // border: 5px solid orange;
-    width: 58%;
+    width: 72%;
     height: 950px;
 }
 
 .textt {
     height: 700px;
+}
+
+// .onTap {
+//     fill: #ff8c00;
+// }
+
+.card {
+    width: 28%;
+}
+
+.photocontainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    // border: 5px solid orange;
+    height: 800px;
+    overflow: scroll;
+
+}
+
+.photocontainer > .card {
+    margin: 20px;
+
+
+}
+
+.content p {
+    font-family: "Damion", sans-serif;
+    text-align: right;
+    margin-right: 5px;
 }

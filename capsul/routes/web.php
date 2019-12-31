@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/photos', function (){
+    return App\Photo::with('user')->latest()->get();
+});

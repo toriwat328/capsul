@@ -1,18 +1,15 @@
 <template>
 <div>
 <SimpleNav />
-    <div class="container mapposition">
-        <div>
-            <NYMap />
-        </div>
-        <div class="photoview">
-            <h1 class="title">East Harlem</h1>
-            <hr>
-        </div>
-        <hr>
+
+    <div class="container mapposition" >
+
+
+            <NYMap @headerChange="updateHeader($event)"/>
+    
+    <Photoside :hoodFig="hoodFig" />
 
     </div>
-
 
 
 </div>
@@ -21,15 +18,29 @@
 <script>
     import SimpleNav from './SimpleNav.vue'
     import NYMap from './NYMap.vue'
+    import Photoside from './Photoside.vue'
 
     export default {
         components: {
             SimpleNav,
-            NYMap
+            NYMap,
+            Photoside
+
+        },
+        data(){
+            return {
+                hoodFig: 'Neighborhoods'
+            }
 
         },
         mounted() {
 
+        },
+        methods: {
+            updateHeader(clickedHeader){
+                this.hoodFig = clickedHeader;
+            }
         }
+
     }
 </script>
