@@ -50,28 +50,6 @@ div.navbar-start {
   margin-top: 50px;
 }
 
-#East_Harlem,
-#Morningside_Heights,
-#Upper_West_Side,
-#Central_Park,
-#Harlem,
-#Upper_East_Side,
-#Lenox_Hill,
-#Hell_s_Kitchen,
-#Theater_District,
-#Midtown,
-#Chelsea,
-#Nomad,
-#Kips_Bay,
-#West_Village,
-#Greenwich_Village,
-#East_Village,
-#Soho_ChinaTown_Tribeca,
-#Lower_East_Side,
-#Financial_District {
-  fill: #515151;
-}
-
 #East_Harlem:hover,
 #Morningside_Heights:hover,
 #Upper_West_Side:hover,
@@ -114,8 +92,13 @@ div.container.mapposition {
   height: 700px;
 }
 
+.mapClick {
+  fill: thistle;
+}
+
 .card {
   width: 28%;
+  height: 230px;
 }
 
 .photocontainer {
@@ -138,5 +121,14 @@ div.container.mapposition {
   font-family: "Damion", sans-serif;
   text-align: right;
   margin-right: 5px;
+  height: 40px;
+}
+
+.inActive {
+  fill: #515151;
+}
+
+.active {
+  fill: red;
 }
 

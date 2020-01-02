@@ -2147,12 +2147,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   data: function data() {
-    return {};
+    return {
+      Financial_District: false,
+      Lower_East_Side: false,
+      Soho_ChinaTown_Tribeca: false,
+      East_Village: false,
+      Greenwich_Village: false,
+      West_Village: false,
+      Kips_Bay: false,
+      Nomad: false,
+      Chelsea: false,
+      Midtown: false,
+      Theater_District: false,
+      Hell_s_Kitchen: false,
+      Lenox_Hill: false,
+      Upper_East_Side: false,
+      East_Harlem: false,
+      Central_Park: false,
+      Harlem: false,
+      Upper_West_Side: false,
+      Morningside_Heights: false
+    };
   },
   methods: {
     updateView: function updateView(e) {
+      var hoodId = e.path[1].id;
+      console.log(hoodId);
+
+      if (hoodId == 'Financial_District') {
+        console.log(this.Financial_District);
+        this.Financial_District = !this.Financial_District;
+        console.log(this.Financial_District);
+      } else {
+        this.Lower_East_Side = !this.Lower_East_Side;
+      }
+
       var name = e.path[1].dataset.name;
       this.$emit('headerChange', name);
+      console.log(e);
     }
   }
 });
@@ -2233,6 +2265,19 @@ __webpack_require__.r(__webpack_exports__);
       var data = _ref.data;
       return _this.photos = data;
     });
+  },
+  computed: {
+    filteredPhotos: function filteredPhotos() {
+      var _this2 = this;
+
+      if (this.hoodFig === 'Neighborhoods') {
+        return this.photos;
+      } else {
+        return this.photos.filter(function (photo) {
+          return photo.neighborhood.match(_this2.hoodFig);
+        });
+      }
+    }
   }
 });
 
@@ -38108,6 +38153,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Financial_District ? { fill: "red" } : { fill: "#515151" },
           attrs: {
             id: "Financial_District",
             "data-name": "Financial District"
@@ -38140,6 +38186,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Lower_East_Side ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Lower_East_Side", "data-name": "Lower East Side" },
           on: {
             click: function($event) {
@@ -38169,6 +38216,9 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Soho_ChinaTown_Tribeca
+            ? { fill: "red" }
+            : { fill: "#515151" },
           attrs: {
             id: "Soho_ChinaTown_Tribeca",
             "data-name": "Soho/ChinaTown/Tribeca"
@@ -38201,6 +38251,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.East_Village ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "East_Village", "data-name": "East Village" },
           on: {
             click: function($event) {
@@ -38222,6 +38273,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Greenwich_Village ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Greenwich_Village", "data-name": "Greenwich Village" },
           on: {
             click: function($event) {
@@ -38243,6 +38295,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.West_Village ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "West_Village", "data-name": "West Village" },
           on: {
             click: function($event) {
@@ -38264,6 +38317,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Kips_Bay ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Kips_Bay", "data-name": "Kips Bay" },
           on: {
             click: function($event) {
@@ -38293,6 +38347,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Nomad ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Nomad", "data-name": "Nomad" },
           on: {
             click: function($event) {
@@ -38330,6 +38385,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Chelsea ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Chelsea", "data-name": "Chelsea" },
           on: {
             click: function($event) {
@@ -38351,6 +38407,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Midtown ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Midtown", "data-name": "Midtown" },
           on: {
             click: function($event) {
@@ -38380,6 +38437,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Theater_District ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Theater_District", "data-name": "Theater District" },
           on: {
             click: function($event) {
@@ -38409,6 +38467,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Hell_s_Kitchen ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Hell_s_Kitchen", "data-name": "Hell's Kitchen" },
           on: {
             click: function($event) {
@@ -38430,6 +38489,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Lenox_Hill ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Lenox_Hill", "data-name": "Lenox Hill" },
           on: {
             click: function($event) {
@@ -38459,6 +38519,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Upper_East_Side ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Upper_East_Side", "data-name": "Upper East Side" },
           on: {
             click: function($event) {
@@ -38488,6 +38549,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.East_Harlem ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "East_Harlem", "data-name": "East Harlem" },
           on: {
             click: function($event) {
@@ -38525,6 +38587,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Central_Park ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Central_Park", "data-name": "Central Park" },
           on: {
             click: function($event) {
@@ -38554,6 +38617,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Harlem ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Harlem", "data-name": "Harlem" },
           on: {
             click: function($event) {
@@ -38591,6 +38655,7 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Upper_West_Side ? { fill: "red" } : { fill: "#515151" },
           attrs: { id: "Upper_West_Side", "data-name": "Upper West Side" },
           on: {
             click: function($event) {
@@ -38624,6 +38689,9 @@ var render = function() {
       _c(
         "g",
         {
+          style: _vm.Morningside_Heights
+            ? { fill: "red" }
+            : { fill: "#515151" },
           attrs: {
             id: "Morningside_Heights",
             "data-name": "Morningside Heights"
@@ -38722,7 +38790,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "photocontainer" },
-      _vm._l(_vm.photos, function(photo) {
+      _vm._l(_vm.filteredPhotos, function(photo) {
         return _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-image" }, [
             _c("figure", { staticClass: "image is-4by3" }, [
