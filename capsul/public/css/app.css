@@ -22,8 +22,8 @@ h1.title {
 
 h2.subtitle {
   font-family: "Nunito", sans-serif;
-  font-weight: 200;
-  color: white;
+  font-weight: 300;
+  color: thistle;
   font-size: 20px;
 }
 
@@ -124,11 +124,71 @@ div.container.mapposition {
   height: 40px;
 }
 
-.inActive {
-  fill: #515151;
+.nophotos {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
 }
 
-.active {
-  fill: red;
+.nophotos h1 {
+  font-size: 40px;
+  font-family: "Damion", sans-serif;
+}
+
+.nophotos h2 {
+  font-size: 45px;
+  font-family: "Nunito", sans-serif;
+}
+
+.nophotos svg {
+  width: 150px;
+}
+
+.modalformat {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-card-body {
+  font-family: "Damion", sans-serif;
+  font-size: 18px;
+}
+
+.signupbody {
+  height: 900px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.signupcontainer {
+  background-image: url(/images/map_lines-04_optimized2.svg?b5715ca64b68effb0683b78a7052b5be);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.loginbody {
+  height: 900px;
+}
+
+.logincontainer {
+  background-color: #515151;
+}
+
+.aboutbody {
+  height: 900px;
+}
+
+.sigupbox {
+  margin-top: 100px;
+  height: 460px;
+  background-color: whitesmoke;
+  width: 40%;
+  border-radius: 3%;
 }
 

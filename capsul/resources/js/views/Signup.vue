@@ -1,7 +1,13 @@
 <template>
-<div>
+<div class="signupcontainer">
     <SimpleNav />
-    <div class="aboutbody">
+    <div class="signupbody">
+
+        <div class="sigupbox">
+            <p></p>
+
+        </div>
+
     </div>
 </div>
 </template>

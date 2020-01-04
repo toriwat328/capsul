@@ -24,17 +24,24 @@
         <router-link to="/map" exact>
             <a class="navbar-item" an>Map</a>
         </router-link>
+        <router-link to="/addphoto" exact>
+            <a class="navbar-item" an>Add Photo</a>
+        </router-link>
           </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+            <router-link tag="a" to="/signup" exact>
               <a class="button is-light is-inverted">
                 <strong>Sign up</strong>
               </a>
+            </router-link>
+            <router-link tag="a" to="/login" exact>
               <a class="button is-light">
                 Log in
               </a>
+            </router-link>
             </div>
           </div>
         </div>

@@ -12,6 +12,12 @@ import Map from './views/Map.vue';
 
 import Photography from './views/Photography.vue';
 
+import Signup from './views/Signup.vue';
+
+import Login from './views/Login.vue';
+
+import CreatePhoto from './views/CreatePhoto.vue'
+
 
 
 
@@ -21,7 +27,7 @@ let routes = [
 
         components: {
             header: Home,
-            
+
         },
         children: [
             { path: '',
@@ -56,6 +62,27 @@ let routes = [
 
         components: {
             header: Map,
+        }
+    },
+    {
+        path: '/signup',
+
+        components: {
+            header: Signup,
+        }
+    },
+    {
+        path: '/login',
+
+        components: {
+            header: Login,
+        }
+    },
+    {
+        path: '/addphoto',
+
+        components: {
+            header: CreatePhoto,
         }
     },
 ];

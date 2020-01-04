@@ -1,7 +1,7 @@
 <template>
-<div>
+<div class="logincontainer">
     <SimpleNav />
-    <div class="aboutbody">
+    <div class="loginbody">
     </div>
 </div>
 </template>

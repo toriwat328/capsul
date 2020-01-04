@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/photos', function (){
-    return App\Photo::with('user')->latest()->get();
-});
+Route::get('/photos', 'PhotosController@index');
+
+Route::post('/photos', 'PhotosController@store');
