@@ -165,7 +165,7 @@ div.container.mapposition {
 }
 
 .signupcontainer {
-  background-image: url(/images/map_lines-04_optimized2.svg?b5715ca64b68effb0683b78a7052b5be);
+  background-image: url(/images/map_lines-04_optimized2.svg?fd20ff9214a382a409bb5bc34d575a1f);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -187,8 +187,55 @@ div.container.mapposition {
 .sigupbox {
   margin-top: 100px;
   height: 460px;
-  background-color: whitesmoke;
+  background-color: #515151;
   width: 40%;
   border-radius: 3%;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.createphoto {
+  background-color: #515151;
+}
+
+.formpositon {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row;
+}
+
+form {
+  width: 48%;
+  border-right: 1px dashed #f2f1f1;
+}
+
+figure .imageform {
+  width: 50%;
+}
+
+.imageform > img {
+  height: 400px;
+  margin-left: 10px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.message-header h1 {
+  font-family: "Damion", sans-serif;
+  font-size: 30px;
+}
+
+.control label {
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
 }
 

@@ -42,7 +42,7 @@ class PhotosController extends Controller
         $this->validate($request, ['image' => 'required', 'neighborhood' => 'required', 'caption' => 'required', 'decade' => 'required']);
 
         //create the photo
-        $photo = App\User::find(1)->photos()->create($request->only(['image', 'neighborhood', 'caption', 'decade']));
+        $photo = User::find(2)->photos()->create($request->only(['image', 'neighborhood', 'caption', 'decade']));
 
         //return it and include the user
         return  $photo->load('user');

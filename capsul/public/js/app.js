@@ -1908,7 +1908,12 @@ __webpack_require__.r(__webpack_exports__);
     SimpleNav: _SimpleNav_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Form: _Form_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  mounted: function mounted() {}
+  methods: {
+    addPhoto: function addPhoto(photo) {
+      this.photos.unshift(status);
+      alert('Your photo has been added to capsul!');
+    }
+  }
 });
 
 /***/ }),
@@ -1999,10 +2004,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: {
-    selectedhood: '',
-    selecteddecade: ''
+  data: function data() {
+    return {
+      form: new Form({
+        image: '',
+        neighborhood: '',
+        decade: '',
+        caption: ''
+      })
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      //submit an ajax request to the server
+      this.form.post('/photos').then(function (photo) {
+        return _this.$emit('completed', photo);
+      });
+    }
   }
 });
 
@@ -55639,10 +55665,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "createphoto" },
     [
       _c("SimpleNav"),
       _vm._v(" "),
-      _c("div", { staticClass: "aboutbody" }, [_c("Form")], 1)
+      _c(
+        "div",
+        { staticClass: "aboutbody" },
+        [_c("Form", { on: { completed: _vm.addPhoto } })],
+        1
+      )
     ],
     1
   )
@@ -55670,12 +55702,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "message is-light" }, [
-      _c("div", { staticClass: "message-header is-light" }, [
-        _vm._v("\n            Upload Your Photos\n        ")
-      ]),
+    _c("div", { staticClass: "message is-light form" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "message-body is-light" }, [
+      _c("div", { staticClass: "message-body is-light formpositon" }, [
         _c(
           "form",
           {
@@ -55683,6 +55713,9 @@ var render = function() {
               submit: function($event) {
                 $event.preventDefault()
                 return _vm.onSubmit($event)
+              },
+              keydown: function($event) {
+                return _vm.form.errors.clear()
               }
             }
           },
@@ -55690,26 +55723,30 @@ var render = function() {
             _c("p", { staticClass: "control" }, [
               _c("label", { staticClass: "label" }, [_vm._v("Image URL")]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.image,
-                    expression: "image"
-                  }
-                ],
-                attrs: { type: "text" },
-                domProps: { value: _vm.image },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("span", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.image,
+                      expression: "form.image"
                     }
-                    _vm.image = $event.target.value
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.form.image },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "image", $event.target.value)
+                    }
                   }
-                }
-              })
+                }),
+                _vm._v(" "),
+                _c("button", [_vm._v("Clear")])
+              ])
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "control" }, [
@@ -55722,8 +55759,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.selectedhood,
-                      expression: "selectedhood"
+                      value: _vm.form.neighborhood,
+                      expression: "form.neighborhood"
                     }
                   ],
                   on: {
@@ -55736,9 +55773,13 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.selectedhood = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
+                      _vm.$set(
+                        _vm.form,
+                        "neighborhood",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
                     }
                   }
                 },
@@ -55785,7 +55826,16 @@ var render = function() {
                   _vm._v(" "),
                   _c("option", [_vm._v("West Village")])
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.form.errors.has("neighborhood")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.form.errors.get("neighborhood"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "control" }, [
@@ -55798,8 +55848,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.selecteddecade,
-                      expression: "selecteddecade"
+                      value: _vm.form.decade,
+                      expression: "form.decade"
                     }
                   ],
                   on: {
@@ -55812,9 +55862,13 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.selecteddecade = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
+                      _vm.$set(
+                        _vm.form,
+                        "decade",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
                     }
                   }
                 },
@@ -55839,7 +55893,16 @@ var render = function() {
                   _vm._v(" "),
                   _c("option", [_vm._v("1940s")])
                 ]
-              )
+              ),
+              _vm._v(" "),
+              _vm.form.errors.has("decade")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.form.errors.get("decade"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "control" }, [
@@ -55850,27 +55913,51 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.caption,
-                    expression: "caption"
+                    value: _vm.form.caption,
+                    expression: "form.caption"
                   }
                 ],
-                domProps: { value: _vm.caption },
+                domProps: { value: _vm.form.caption },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.caption = $event.target.value
+                    _vm.$set(_vm.form, "caption", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("caption")
+                ? _c("span", {
+                    staticClass: "help is-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.form.errors.get("caption"))
+                    }
+                  })
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _vm._m(0)
+            _c("p", { staticClass: "control" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "button is-dark",
+                  attrs: { disabled: _vm.form.errors.any() }
+                },
+                [_vm._v("Submit")]
+              )
+            ])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _vm.form.image
+          ? _c("figure", { staticClass: "imageform is-4by3" }, [
+              _c("img", { attrs: { src: _vm.form.image, alt: "image" } })
+            ])
+          : _vm._e()
       ])
     ])
   ])
@@ -55880,8 +55967,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "control" }, [
-      _c("button", { staticClass: "button is-dark" }, [_vm._v("Submit")])
+    return _c("div", { staticClass: "message-header is-light" }, [
+      _c("h1", [_vm._v("Upload Your Photos")])
     ])
   }
 ]
@@ -56304,7 +56391,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Financial_District"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: {
             id: "Financial_District",
@@ -56340,7 +56427,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Lower_East_Side"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Lower_East_Side", "data-name": "Lower East Side" },
           on: {
@@ -56373,7 +56460,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Soho_ChinaTown_Tribeca"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: {
             id: "Soho_ChinaTown_Tribeca",
@@ -56409,7 +56496,7 @@ var render = function() {
         {
           style:
             _vm.selected == "East_Village"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "East_Village", "data-name": "East Village" },
           on: {
@@ -56434,7 +56521,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Greenwich_Village"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Greenwich_Village", "data-name": "Greenwich Village" },
           on: {
@@ -56459,7 +56546,7 @@ var render = function() {
         {
           style:
             _vm.selected == "West_Village"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "West_Village", "data-name": "West Village" },
           on: {
@@ -56484,7 +56571,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Kips_Bay"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Kips_Bay", "data-name": "Kips Bay" },
           on: {
@@ -56516,7 +56603,7 @@ var render = function() {
         "g",
         {
           style:
-            _vm.selected == "Nomad" ? { fill: "thistle" } : { fill: "#515151" },
+            _vm.selected == "Nomad" ? { fill: "e5e5e5" } : { fill: "#515151" },
           attrs: { id: "Nomad", "data-name": "Nomad" },
           on: {
             click: function($event) {
@@ -56556,7 +56643,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Chelsea"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Chelsea", "data-name": "Chelsea" },
           on: {
@@ -56581,7 +56668,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Midtown"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Midtown", "data-name": "Midtown" },
           on: {
@@ -56614,7 +56701,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Theater_District"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Theater_District", "data-name": "Theater District" },
           on: {
@@ -56647,7 +56734,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Hell_s_Kitchen"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Hell_s_Kitchen", "data-name": "Hell's Kitchen" },
           on: {
@@ -56672,7 +56759,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Lenox_Hill"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Lenox_Hill", "data-name": "Lenox Hill" },
           on: {
@@ -56705,7 +56792,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Upper_East_Side"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Upper_East_Side", "data-name": "Upper East Side" },
           on: {
@@ -56738,7 +56825,7 @@ var render = function() {
         {
           style:
             _vm.selected == "East_Harlem"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "East_Harlem", "data-name": "East Harlem" },
           on: {
@@ -56779,7 +56866,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Central_Park"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Central_Park", "data-name": "Central Park" },
           on: {
@@ -56811,9 +56898,7 @@ var render = function() {
         "g",
         {
           style:
-            _vm.selected == "Harlem"
-              ? { fill: "thistle" }
-              : { fill: "#515151" },
+            _vm.selected == "Harlem" ? { fill: "e5e5e5" } : { fill: "#515151" },
           attrs: { id: "Harlem", "data-name": "Harlem" },
           on: {
             click: function($event) {
@@ -56853,7 +56938,7 @@ var render = function() {
         {
           style:
             _vm.selected == "Upper_West_Side"
-              ? { fill: "thistle" }
+              ? { fill: "e5e5e5" }
               : { fill: "#515151" },
           attrs: { id: "Upper_West_Side", "data-name": "Upper West Side" },
           on: {
@@ -72907,6 +72992,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utilities_Form_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utilities/Form.js */ "./resources/js/utilities/Form.js");
+
 
 
 
@@ -72926,27 +73013,9 @@ try {
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+window.Form = _utilities_Form_js__WEBPACK_IMPORTED_MODULE_3__["default"];
 
 /***/ }),
 
@@ -73033,6 +73102,270 @@ var routes = [{
   routes: routes,
   linkActiveClass: 'is-active'
 }));
+
+/***/ }),
+
+/***/ "./resources/js/utilities/Errors.js":
+/*!******************************************!*\
+  !*** ./resources/js/utilities/Errors.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Errors =
+/*#__PURE__*/
+function () {
+  /**
+   * Create a new Errors instance.
+   */
+  function Errors() {
+    _classCallCheck(this, Errors);
+
+    this.errors = {};
+  }
+  /**
+   * Determine if an errors exists for the given field.
+   *
+   * @param {string} field
+   */
+
+
+  _createClass(Errors, [{
+    key: "has",
+    value: function has(field) {
+      if (this.errors.errors) {
+        console.log(this.errors.errors.hasOwnProperty(field));
+        return this.errors.errors.hasOwnProperty(field);
+      }
+    }
+    /**
+     * Determine if we have any errors.
+     */
+
+  }, {
+    key: "any",
+    value: function any() {
+      return Object.keys(this.errors).length > 0;
+    }
+    /**
+     * Retrieve the error message for a field.
+     *
+     * @param {string} field
+     */
+
+  }, {
+    key: "get",
+    value: function get(field) {
+      if (this.errors.errors[field]) {
+        return this.errors.errors[field][0];
+      }
+    }
+    /**
+     * Record the new errors.
+     *
+     * @param {object} errors
+     */
+
+  }, {
+    key: "record",
+    value: function record(errors) {
+      this.errors = errors;
+    }
+    /**
+     * Clear one or all error fields.
+     *
+     * @param {string|null} field
+     */
+
+  }, {
+    key: "clear",
+    value: function clear(field) {
+      if (field) {
+        delete this.errors[field];
+        return;
+      }
+
+      this.errors = {};
+    }
+  }]);
+
+  return Errors;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Errors);
+
+/***/ }),
+
+/***/ "./resources/js/utilities/Form.js":
+/*!****************************************!*\
+  !*** ./resources/js/utilities/Form.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Errors_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Errors.js */ "./resources/js/utilities/Errors.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Form =
+/*#__PURE__*/
+function () {
+  /**
+   * Create a new Form instance.
+   *
+   * @param {object} data
+   */
+  function Form(data) {
+    _classCallCheck(this, Form);
+
+    this.originalData = data;
+
+    for (var field in data) {
+      this[field] = data[field];
+    }
+
+    this.errors = new _Errors_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+  }
+  /**
+   * Fetch all relevant data for the form.
+   */
+
+
+  _createClass(Form, [{
+    key: "data",
+    value: function data() {
+      var data = {};
+
+      for (var property in this.originalData) {
+        data[property] = this[property];
+      }
+
+      return data;
+    }
+    /**
+     * Reset the form fields.
+     */
+
+  }, {
+    key: "reset",
+    value: function reset() {
+      for (var field in this.originalData) {
+        this[field] = '';
+      }
+
+      this.errors.clear();
+    }
+    /**
+     * Send a POST request to the given URL.
+     * .
+     * @param {string} url
+     */
+
+  }, {
+    key: "post",
+    value: function post(url) {
+      return this.submit('post', url);
+    }
+    /**
+     * Send a PUT request to the given URL.
+     * .
+     * @param {string} url
+     */
+
+  }, {
+    key: "put",
+    value: function put(url) {
+      return this.submit('put', url);
+    }
+    /**
+     * Send a PATCH request to the given URL.
+     * .
+     * @param {string} url
+     */
+
+  }, {
+    key: "patch",
+    value: function patch(url) {
+      return this.submit('patch', url);
+    }
+    /**
+     * Send a DELETE request to the given URL.
+     * .
+     * @param {string} url
+     */
+
+  }, {
+    key: "delete",
+    value: function _delete(url) {
+      return this.submit('delete', url);
+    }
+    /**
+     * Submit the form.
+     *
+     * @param {string} requestType
+     * @param {string} url
+     */
+
+  }, {
+    key: "submit",
+    value: function submit(requestType, url) {
+      var _this = this;
+
+      return new Promise(function (resolve, reject) {
+        axios[requestType](url, _this.data()).then(function (response) {
+          _this.onSuccess(response.data);
+
+          resolve(response.data);
+        })["catch"](function (error) {
+          _this.onFail(error.response.data);
+
+          reject(error.response.data);
+        });
+      });
+    }
+    /**
+     * Handle a successful form submission.
+     *
+     * @param {object} data
+     */
+
+  }, {
+    key: "onSuccess",
+    value: function onSuccess(data) {
+      this.reset();
+    }
+    /**
+     * Handle a failed form submission.
+     *
+     * @param {object} errors
+     */
+
+  }, {
+    key: "onFail",
+    value: function onFail(errors) {
+      this.errors.record(errors);
+    }
+  }]);
+
+  return Form;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Form);
 
 /***/ }),
 

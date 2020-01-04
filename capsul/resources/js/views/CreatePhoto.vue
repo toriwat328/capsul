@@ -1,8 +1,8 @@
 <template>
-<div>
+<div class="createphoto">
     <SimpleNav />
     <div class="aboutbody">
-        <Form />
+        <Form @completed="addPhoto"/>
     </div>
 </div>
 </template>
@@ -16,8 +16,15 @@
             SimpleNav,
             Form
         },
-        mounted() {
+        methods: {
+            addPhoto(photo){
+                this.photos.unshift(status);
 
+                alert('Your photo has been added to capsul!');
+
+
+            }
         }
+
     }
 </script>

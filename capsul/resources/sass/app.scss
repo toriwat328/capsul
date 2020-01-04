@@ -188,7 +188,49 @@ div.container.mapposition {
 .sigupbox {
     margin-top: 100px;
     height: 460px;
-    background-color: hsl(0, 0%, 96%);
+    background-color: #515151;
     width: 40%;
     border-radius: 3%
+}
+
+.form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.createphoto {
+    background-color: #515151;
+}
+
+.formpositon {
+    display: flex;
+    flex-flow: row;
+}
+
+form {
+    width: 48%;
+    border-right: 1px dashed #f2f1f1;
+}
+
+figure .imageform{
+    width: 50%;
+}
+
+.imageform > img {
+    height: 400px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.message-header h1 {
+    font-family: "Damion", sans-serif;
+    font-size: 30px;
+}
+
+.control label {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
 }
