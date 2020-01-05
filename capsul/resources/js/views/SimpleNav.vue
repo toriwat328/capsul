@@ -24,9 +24,6 @@
         <router-link to="/map" exact>
             <a class="navbar-item" an>Map</a>
         </router-link>
-        <router-link to="/addphoto" exact>
-            <a class="navbar-item" an>Add Photo</a>
-        </router-link>
           </div>
 
         <div class="navbar-end">

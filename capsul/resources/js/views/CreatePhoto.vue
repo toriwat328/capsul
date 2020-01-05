@@ -22,6 +22,8 @@
 
                 alert('Your photo has been added to capsul!');
 
+                this.$router.push('/dashboard');
+
 
             }
         }

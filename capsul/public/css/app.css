@@ -172,24 +172,66 @@ div.container.mapposition {
   background-repeat: no-repeat;
 }
 
+.sigupbox {
+  margin-top: 100px;
+  height: 500px;
+  background-color: #515151;
+  width: 60%;
+  border-radius: 3%;
+}
+
 .loginbody {
   height: 900px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 .logincontainer {
   background-color: #515151;
+  background-image: url(/images/map_lines-04_optimized3.svg?2ac458a8bb0a3b22241b1b760a697476);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.loginbox {
+  margin-top: 100px;
+  height: 500px;
+  background-color: #fcfcfc;
+  width: 60%;
+  border-radius: 3%;
+}
+
+.dashboardbody {
+  height: 900px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.dashboardcontainer {
+  background-color: #515151;
+  background-image: url(/images/map_lines-04_optimized3.svg?2ac458a8bb0a3b22241b1b760a697476);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.dashboardbox {
+  margin-top: 100px;
+  height: 600px;
+  background-color: #363636;
+  width: 70%;
+  border-radius: 3%;
 }
 
 .aboutbody {
   height: 900px;
-}
-
-.sigupbox {
-  margin-top: 100px;
-  height: 460px;
-  background-color: #515151;
-  width: 40%;
-  border-radius: 3%;
 }
 
 .form {
@@ -237,5 +279,18 @@ figure .imageform {
   font-family: "Nunito", sans-serif;
   font-size: 18px;
   font-weight: 300;
+}
+
+.control {
+  margin: 7px;
+}
+
+.navbaruser {
+  background-color: #4c4c4c;
+}
+
+#logo2 {
+  width: 100%;
+  fill: #f4f4f4;
 }
 

@@ -1,5 +1,6 @@
 {
     "require": {
-        "laravel/installer": "^2.3"
+        "laravel/installer": "^2.3",
+        "laravel/passport": "7.5.1"
     }
 }

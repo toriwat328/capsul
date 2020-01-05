@@ -2,6 +2,10 @@
 <div class="logincontainer">
     <SimpleNav />
     <div class="loginbody">
+    <div class="loginbox">
+        <p></p>
+
+    </div>
     </div>
 </div>
 </template>

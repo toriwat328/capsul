@@ -16,7 +16,11 @@ import Signup from './views/Signup.vue';
 
 import Login from './views/Login.vue';
 
-import CreatePhoto from './views/CreatePhoto.vue'
+import CreatePhoto from './views/CreatePhoto.vue';
+
+import Dashboard from './views/Dashboard.vue';
+
+import CapsulMap from './views/CapsulMap.vue';
 
 
 
@@ -83,6 +87,20 @@ let routes = [
 
         components: {
             header: CreatePhoto,
+        }
+    },
+    {
+        path: '/dashboard',
+
+        components: {
+            header: Dashboard,
+        }
+    },
+    {
+        path: '/capsulmap',
+
+        components: {
+            header: CapsulMap,
         }
     },
 ];

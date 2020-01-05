@@ -9,7 +9,7 @@
             <form @submit.prevent="onSubmit" @keydown="form.errors.clear()">
                 <p class="control">
                     <label class="label">Image URL</label>
-                    <span><input type="text" v-model="form.image"> <button>Clear</button></span
+                    <span><input type="text" v-model="form.image"> <button type="button" @click="clearImgField">Clear</button></span
                     <span class="help is-danger" v-if="form.errors.has('image')" v-text="form.errors.get('image')"></span>
                 </p>
 
@@ -65,7 +65,7 @@
                 <br/>
 
                 <p class="control">
-                    <button class="button is-dark" :disabled="form.errors.any()">Submit</button>
+                    <button type="submit" class="button is-dark" :disabled="form.errors.any()">Submit</button>
                 </p>
             </form>
             <figure v-if="form.image" class="imageform is-4by3">
@@ -105,6 +105,10 @@
                 //submit an ajax request to the server
 
                 this.form.post('/photos').then(photo => this.$emit('completed', photo))
+            },
+
+            clearImgField(){
+                this.form.image = ''
             }
         }
 
