@@ -1,28 +1,54 @@
 <template>
 <div class="dashboardcontainer">
+
     <UserNav />
     <div class="dashboardbody">
-    <div class="dashboardbox">
-    <router-link tag="a" to="/addphoto" exact>
-      <a class="button is-light">
-        <strong>Add Photo</strong>
-      </a>
-    </router-link>
+            <h1>Hello {{userInfo[0].name}}</h1>
+        <div class="dashboardbox">
 
-    </div>
+                <UserPhotos />
+        </div>
     </div>
 </div>
+
 </template>
 
 <script>
-    import UserNav from './UserNav.vue'
+    import UserNav from './UserNav.vue';
+    import UserPhotos from './UserPhotos.vue';
 
     export default {
         components: {
-            UserNav
+            UserNav,
+            UserPhotos
+        },
+        data (){
+            return {
+                token: localStorage.getItem('access_token') || null,
+                isLoggedIn: true,
+                userInfo: [],
+            }
         },
         mounted() {
 
+        },
+        methods: {
+
+
+        },
+        created() {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
+            axios.get('/api/user')
+            .then(({data}) => this.userInfo = data)
+
+            .catch(error => {
+                console.log(error)
+            })
+
+
+
+
         }
+
     }
 </script>

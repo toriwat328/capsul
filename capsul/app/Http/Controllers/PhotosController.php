@@ -20,6 +20,25 @@ class PhotosController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * @return \Illuminate\Http\Response
+      */
+      public function userphotoindex()
+      {
+          return Photo::where('user_id', auth()->user()->id)->with('user')->latest()->get();
+      }
+
+      /**
+       * Show the form for creating a new resource.
+       * @return \Illuminate\Http\Response
+        */
+        public function userinfoindex()
+        {
+            return User::where('id', auth()->user()->id)->get();
+        }
+
+
+    /**
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -42,10 +61,16 @@ class PhotosController extends Controller
         $this->validate($request, ['image' => 'required', 'neighborhood' => 'required', 'caption' => 'required', 'decade' => 'required']);
 
         //create the photo
-        $photo = User::find(2)->photos()->create($request->only(['image', 'neighborhood', 'caption', 'decade']));
+        $photo = Photo::create([
+            'user_id' => auth()->user()->id,
+            'image' => $request->image,
+            'neighborhood' => $request->neighborhood,
+            'caption' => $request->caption,
+            'decade' => $request->decade
+        ]);
 
         //return it and include the user
-        return  $photo->load('user');
+        return  response($photo, 201);
 
     }
 
@@ -91,6 +116,14 @@ class PhotosController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        if($photo->user_id !== auth()->user()->id){
+            return response()->json('Unauthorized', 401);
+        }
+
+        $photo->delete();
+
+        $photos =  Photo::where('user_id', auth()->user()->id)->with('user')->latest()->get();
+
+        return response($photos , 200);
     }
 }

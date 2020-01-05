@@ -16,5 +16,3 @@ Route::get('/', function () {
 });
 
 Route::get('/photos', 'PhotosController@index');
-
-Route::post('/photos', 'PhotosController@store');

@@ -8,6 +8,10 @@
 // // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
 
+body {
+    height: 1600px;
+}
+
 .hero-foot {
     display: flex;
     justify-content: center;
@@ -101,7 +105,7 @@ div.container.mapposition {
 
 .card {
     width: 28%;
-    height: 230px;
+    height: 235px;
 }
 
 .photocontainer {
@@ -178,7 +182,11 @@ div.container.mapposition {
     height: 500px;
     background-color: #515151;
     width: 60%;
-    border-radius: 3%
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fcfcfc;
 }
 
 .loginbody {
@@ -203,14 +211,37 @@ div.container.mapposition {
     height: 500px;
     background-color: #fcfcfc;
     width: 60%;
-    border-radius: 3%
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
 }
 
 .dashboardbody {
-    height: 900px;
+    height: 1300px;
+    width: 80%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin: 130px;
+    margin-top: 0;
+    margin-bottom: 0;
+
 }
+
+.dashboardbody > h1 {
+    font-family: "Damion", sans-serif;
+    font-size: 90px;
+    color: #f2f1f1;
+    height: 50px;
+
+
+}
+
 
 .dashboardcontainer {
     background-color: #515151;
@@ -219,16 +250,18 @@ div.container.mapposition {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    margin: 0 auto;
+
 }
 
 
 
 .dashboardbox {
-    margin-top: 100px;
-    height: 600px;
+    margin-top: 200px;
+    height: 970px;
     background-color: #363636;
-    width: 70%;
-    border-radius: 3%
+    width: 90%;
+    border-radius: 3%;
 }
 
 .aboutbody {
@@ -250,7 +283,7 @@ div.container.mapposition {
     flex-flow: row;
 }
 
-form {
+.formphotos {
     width: 48%;
     border-right: 1px dashed #f2f1f1;
 }
@@ -288,4 +321,35 @@ figure .imageform{
 #logo2 {
     width: 100%;
     fill: #f4f4f4;
+}
+
+.form-control{
+
+}
+
+.loginbox h2{
+    font-family: "Damion", sans-serif;
+    font-size: 50px;
+}
+
+.sigupbox h2{
+    font-family: "Damion", sans-serif;
+    font-size: 50px;
+}
+
+.userphotocontainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    overflow: scroll;
+}
+
+.userphotocontainer > .card {
+    margin: 25px;
+
+}
+
+ .buttonposition {
+    display: flex;
+    justify-content: space-between;
 }

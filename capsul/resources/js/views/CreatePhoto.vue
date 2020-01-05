@@ -1,6 +1,6 @@
 <template>
 <div class="createphoto">
-    <SimpleNav />
+    <UserNav />
     <div class="aboutbody">
         <Form @completed="addPhoto"/>
     </div>
@@ -8,19 +8,16 @@
 </template>
 
 <script>
-    import SimpleNav from './SimpleNav.vue';
+    import UserNav from './UserNav.vue';
     import Form from './Form.vue';
 
     export default {
         components: {
-            SimpleNav,
+            UserNav,
             Form
         },
         methods: {
             addPhoto(photo){
-                this.photos.unshift(status);
-
-                alert('Your photo has been added to capsul!');
 
                 this.$router.push('/dashboard');
 

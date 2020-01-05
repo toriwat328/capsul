@@ -6,7 +6,7 @@
             <h1>Upload Your Photos</h1>
         </div>
         <div class ="message-body is-light formpositon">
-            <form @submit.prevent="onSubmit" @keydown="form.errors.clear()">
+            <form @submit.prevent="onSubmit" @keydown="form.errors.clear()" class="formphotos">
                 <p class="control">
                     <label class="label">Image URL</label>
                     <span><input type="text" v-model="form.image"> <button type="button" @click="clearImgField">Clear</button></span
@@ -46,6 +46,7 @@
                       <option disabled value="">Please select a decade</option>
                       <option>2020s</option>
                       <option>2010s</option>
+                      <option>2000s</option>
                       <option>1990s</option>
                       <option>1980s</option>
                       <option>1970s</option>
@@ -102,9 +103,10 @@
 
         methods: {
             onSubmit() {
-                //submit an ajax request to the server
 
-                this.form.post('/photos').then(photo => this.$emit('completed', photo))
+                this.form.post('api/photos')
+
+                .then(photo => this.$emit('completed', photo))
             },
 
             clearImgField(){

@@ -66,6 +66,9 @@ let routes = [
 
         components: {
             header: Map,
+        },
+        meta: {
+            requiresVisitor: true,
         }
     },
     {
@@ -73,6 +76,9 @@ let routes = [
 
         components: {
             header: Signup,
+        },
+        meta: {
+            requiresVisitor: true,
         }
     },
     {
@@ -80,6 +86,9 @@ let routes = [
 
         components: {
             header: Login,
+        },
+        meta: {
+            requiresVisitor: true,
         }
     },
     {
@@ -87,6 +96,9 @@ let routes = [
 
         components: {
             header: CreatePhoto,
+        },
+        meta: {
+            requiresAuth: true,
         }
     },
     {
@@ -94,6 +106,9 @@ let routes = [
 
         components: {
             header: Dashboard,
+        },
+        meta: {
+            requiresAuth: true,
         }
     },
     {
@@ -101,8 +116,12 @@ let routes = [
 
         components: {
             header: CapsulMap,
+        },
+        meta: {
+            requiresAuth: true,
         }
     },
+
 ];
 
 export default new VueRouter({

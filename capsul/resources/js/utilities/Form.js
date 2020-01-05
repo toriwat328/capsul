@@ -1,5 +1,7 @@
 import Errors from './Errors.js';
 
+const token = localStorage.getItem('access_token');
+
 class Form {
     /**
      * Create a new Form instance.
@@ -91,6 +93,7 @@ class Form {
      */
     submit(requestType, url) {
         return new Promise((resolve, reject) => {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
             axios[requestType](url, this.data())
                 .then(response => {
                     this.onSuccess(response.data);

@@ -13,43 +13,75 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-        <router-link  to="/" exact>
-            <a class="navbar-item is-light">Home</a>
-        </router-link>
-        <router-link  to="/dashboard" exact>
-            <a class="navbar-item is-light" an>Dashboard</a>
-        </router-link>
-        <router-link to="/capsulmap" exact>
-            <a class="navbar-item is-light" an>Capsul Map</a>
-        </router-link>
-          </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-            <router-link tag="a" to="/signup" exact>
-              <a class="button is-light">
-                <strong>Sign up</strong>
-              </a>
-            </router-link>
-            <router-link tag="a" to="/login" exact>
-              <a class="button">
-                Log in
-              </a>
-            </router-link>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <router-link  to="/" exact>
+                    <a class="navbar-item is-light">Home</a>
+                </router-link>
+                <router-link  to="/dashboard" exact>
+                    <a class="navbar-item is-light" an>Dashboard</a>
+                </router-link>
+                <router-link to="/capsulmap" exact>
+                    <a class="navbar-item is-light" an>Capsul Map</a>
+                </router-link>
             </div>
-          </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+
+                          <button @click="logout" class="button is-light" >
+
+                          <strong>Log Out</strong>
+
+                          </button>
+
+                        </div>
+                    </div>
+                </div>
         </div>
-      </div>
     </nav>
     </div>
 </template>
-<script>
-    export default {
-        mounted() {
 
+<script>
+
+export default {
+    components: {
+
+    },
+    data (){
+        return {
+            token: localStorage.getItem('access_token') || null,
+            isLoggedIn: true
         }
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    logout(){
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
+        if(this.isLoggedIn){
+
+                axios.post('/api/logout')
+
+                    .then(response => {
+                            localStorage.removeItem('access_token');
+                            this.$router.push('/login');
+
+
+                    })
+                    .catch(error => {
+                    localStorage.removeItem('access_token');
+                            console.log(error)
+
+                    })
+
+            }
+        }
+
     }
+}
+
 </script>
