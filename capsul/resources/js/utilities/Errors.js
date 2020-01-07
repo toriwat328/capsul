@@ -14,11 +14,10 @@ class Errors {
      */
     has(field) {
         if(this.errors.errors){
-            console.log(this.errors.errors.hasOwnProperty(field));
+            console.log(this.errors.errors.hasOwnProperty(field), field);
             return this.errors.errors.hasOwnProperty(field);
 
-        }
-
+        } 
     }
 
 

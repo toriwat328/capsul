@@ -9,7 +9,7 @@
             <form @submit.prevent="onSubmit" @keydown="form.errors.clear()" class="formphotos">
                 <p class="control">
                     <label class="label">Image URL</label>
-                    <span><input type="text" v-model="form.image"> <button type="button" @click="clearImgField">Clear</button></span
+                    <span><input type="text" v-model="form.image"> <button type="button" @click="clearImgField">Clear</button></span>
                     <span class="help is-danger" v-if="form.errors.has('image')" v-text="form.errors.get('image')"></span>
                 </p>
 

@@ -2,7 +2,7 @@
 
 <div>
 
-<div class="message-header buttonposition" >
+<div class="message-header buttonposition is-light" >
 
     <h1>Your Photos</h1>
 
@@ -13,15 +13,15 @@
     </router-link>
 
 </div>
-<div class="message-body userphotocontainer">
-<div class="card is-dark" v-for="photo in photos" @click="showUserPic(photo)">
+<div class="message-body userphotocontainer is-light">
+<div class="card guestcard " v-for="photo in photos" @click="showUserPic(photo)">
     <div class="card-image" >
     <figure class="image is-4by3">
       <img :src="photo.image" alt="image">
     </figure>
     </div>
     <div class="content">
-        <p>from {{photo.user.name}} - {{photo.decade}}</p>
+        <p>{{photo.neighborhood}} - {{photo.decade}}</p>
     </div>
 </div>
 
@@ -42,7 +42,8 @@
         </div>
 
         <p>{{UserShowPhoto.neighborhood}}</p>
-        <button @click="deletePic(UserShowPhoto.id)">DELETE</button>
+        <br/>
+        <button class="button" @click="deletePic(UserShowPhoto.id)">DELETE</button>
     </section>
   </div>
   <button class="modal-close is-large" aria-label="close" @click="closePic()"></button>

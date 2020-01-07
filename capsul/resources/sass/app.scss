@@ -99,14 +99,24 @@ div.container.mapposition {
     height: 700px;
 }
 
-.mapClick {
-    fill: thistle;
+.titleusermap {
+    font-family: "Damion", sans-serif;
+    font-size: 80px;
+    color: #f2f1f1;
+    text-align: center;
 }
 
-.card {
+.guestcard {
     width: 28%;
     height: 235px;
 }
+
+.usercard {
+    width: 70%;
+    height: 800px;
+    margin: 30px;
+}
+
 
 .photocontainer {
     display: flex;
@@ -121,6 +131,16 @@ div.container.mapposition {
 
 .photocontainer > .card {
     margin: 20px;
+
+
+}
+
+.userphotocontainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    height: 800px;
+    overflow: scroll;
 
 
 }
@@ -153,6 +173,29 @@ div.container.mapposition {
     width: 150px;
 }
 
+.nophotosuser {
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+
+}
+
+.nophotosuser h1 {
+    font-size: 40px;
+    font-family: "Damion", sans-serif;
+    color: #f2f1f1;
+}
+
+.nophotosuser h2 {
+    font-size: 45px;
+    font-family: "Nunito", sans-serif;
+    color: #f2f1f1;
+}
+
+.nophotosuser svg {
+    width: 150px;
+}
+
 .modalformat{
     display: flex;
     justify-content: space-between;
@@ -170,6 +213,7 @@ div.container.mapposition {
 }
 
 .signupcontainer {
+    height: 1500px;
     background-image: url(public/img/map_lines-04_optimized2.svg);
     background-attachment: fixed;
     background-position: center;
@@ -187,6 +231,8 @@ div.container.mapposition {
     flex-direction: column;
     justify-content: center;
     color: #fcfcfc;
+    align-items: center;
+    align-content: center;
 }
 
 .loginbody {
@@ -196,6 +242,7 @@ div.container.mapposition {
 }
 
 .logincontainer {
+    height: 1500px;
     background-color: #515151;
     background-image: url(public/img/map_lines-04_optimized3.svg);
     background-attachment: fixed;
@@ -215,6 +262,8 @@ div.container.mapposition {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    align-content: center;
 
 
 }
@@ -236,16 +285,22 @@ div.container.mapposition {
 .dashboardbody > h1 {
     font-family: "Damion", sans-serif;
     font-size: 90px;
-    color: #f2f1f1;
+    color: #515151;
     height: 50px;
+    text-shadow: 2px 2px 2px thistle;
 
 
 }
 
 
 .dashboardcontainer {
-    background-color: #515151;
-    background-image: url(public/img/map_lines-04_optimized3.svg);
+    // background-color: #515151;
+    // background-image: url(public/img/map_lines-04_optimized3.svg);
+    // background-attachment: fixed;
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    background-image: url(public/img/map_lines-04_optimized2.svg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -264,6 +319,42 @@ div.container.mapposition {
     border-radius: 3%;
 }
 
+
+.capsulmapcontainer {
+    background-color: #515151;
+    background-image: url(public/img/map_lines-04_optimized3.svg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+
+}
+
+.capsulmapbody {
+    height: 1300px;
+    width: 80%;
+    display: flex;
+
+    margin: 130px;
+    margin-top: 100px;
+    margin-bottom: 0;
+
+}
+
+.usermap{
+    width: 350px;
+    margin-top: 100px;
+    // transform: rotate(20deg) translateX(-100px);
+    margin-left: -60px;
+}
+
+.photoviewbck {
+    background-color: 363636;
+}
+
+
+
 .aboutbody {
     height: 900px;
 }
@@ -276,6 +367,7 @@ div.container.mapposition {
 
 .createphoto {
     background-color: #515151;
+    height: 1500px;
 }
 
 .formpositon {
@@ -320,7 +412,7 @@ figure .imageform{
 
 #logo2 {
     width: 100%;
-    fill: #f4f4f4;
+    fill: #515151;
 }
 
 .form-control{
@@ -342,12 +434,27 @@ figure .imageform{
     flex-flow: row wrap;
     justify-content: flex-start;
     overflow: scroll;
+    background-color: #f2f1f1;
+    border-radius: 3%;
+}
+
+.userphotocontainermap {
+    height: 900px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    overflow: scroll;
+    background-color: #515151;
+    border-radius: 3%;
 }
 
 .userphotocontainer > .card {
     margin: 25px;
 
 }
+
 
  .buttonposition {
     display: flex;

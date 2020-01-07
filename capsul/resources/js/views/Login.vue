@@ -1,30 +1,35 @@
 <template>
-<div class="logincontainer" >
+<div class="logincontainer">
     <SimpleNav />
-    <div class="loginbody" this.$root.$on('logoutuser', logout())>
-    <div class="loginbox">
+    <div class="loginbody">
+
+        <div class="loginbox">
 
         <h2>Login In</h2>
+        <br/>
         <form action="#" @submit.prevent="login">
             <div class="form-control">
             <label for="email">Username/Email</label>
-            <input type="email" name="username" id="username" class="login-input" v-model="username">
+            <input type="email" name="username" id="username" class="input is-rounded login-input" v-model="username">
             </div>
-
+            <br/>
             <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="login-input" v-model="password">
+            <input type="password" name="password" id="password" class="input is-rounded login-input" v-model="password">
             </div>
-
+            <br/>
             <div class="form-control">
-            <button type="submit" class="btn-submit">Login</button>
+            <button type="submit" class="button is-light is-inverted btn-submit">Login</button>
             </div>
         </form>
 
-    </div>
+        </div>
+
     </div>
 </div>
 </template>
+
+
 
 <script>
     import SimpleNav from './SimpleNav.vue'

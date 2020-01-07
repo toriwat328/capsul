@@ -96,13 +96,22 @@ div.container.mapposition {
   height: 700px;
 }
 
-.mapClick {
-  fill: thistle;
+.titleusermap {
+  font-family: "Damion", sans-serif;
+  font-size: 80px;
+  color: #f2f1f1;
+  text-align: center;
 }
 
-.card {
+.guestcard {
   width: 28%;
   height: 235px;
+}
+
+.usercard {
+  width: 70%;
+  height: 800px;
+  margin: 30px;
 }
 
 .photocontainer {
@@ -119,6 +128,18 @@ div.container.mapposition {
 
 .photocontainer > .card {
   margin: 20px;
+}
+
+.userphotocontainer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  height: 800px;
+  overflow: scroll;
 }
 
 .content p {
@@ -148,6 +169,28 @@ div.container.mapposition {
   width: 150px;
 }
 
+.nophotosuser {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.nophotosuser h1 {
+  font-size: 40px;
+  font-family: "Damion", sans-serif;
+  color: #f2f1f1;
+}
+
+.nophotosuser h2 {
+  font-size: 45px;
+  font-family: "Nunito", sans-serif;
+  color: #f2f1f1;
+}
+
+.nophotosuser svg {
+  width: 150px;
+}
+
 .modalformat {
   display: -webkit-box;
   display: flex;
@@ -169,6 +212,7 @@ div.container.mapposition {
 }
 
 .signupcontainer {
+  height: 1500px;
   background-image: url(/images/map_lines-04_optimized2.svg?fd20ff9214a382a409bb5bc34d575a1f);
   background-attachment: fixed;
   background-position: center;
@@ -190,6 +234,9 @@ div.container.mapposition {
   -webkit-box-pack: center;
           justify-content: center;
   color: #fcfcfc;
+  -webkit-box-align: center;
+          align-items: center;
+  align-content: center;
 }
 
 .loginbody {
@@ -201,6 +248,7 @@ div.container.mapposition {
 }
 
 .logincontainer {
+  height: 1500px;
   background-color: #515151;
   background-image: url(/images/map_lines-04_optimized3.svg?2ac458a8bb0a3b22241b1b760a697476);
   background-attachment: fixed;
@@ -222,6 +270,9 @@ div.container.mapposition {
           flex-direction: column;
   -webkit-box-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  align-content: center;
 }
 
 .dashboardbody {
@@ -245,13 +296,13 @@ div.container.mapposition {
 .dashboardbody > h1 {
   font-family: "Damion", sans-serif;
   font-size: 90px;
-  color: #f2f1f1;
+  color: #515151;
   height: 50px;
+  text-shadow: 2px 2px 2px thistle;
 }
 
 .dashboardcontainer {
-  background-color: #515151;
-  background-image: url(/images/map_lines-04_optimized3.svg?2ac458a8bb0a3b22241b1b760a697476);
+  background-image: url(/images/map_lines-04_optimized2.svg?fd20ff9214a382a409bb5bc34d575a1f);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -267,6 +318,36 @@ div.container.mapposition {
   border-radius: 3%;
 }
 
+.capsulmapcontainer {
+  background-color: #515151;
+  background-image: url(/images/map_lines-04_optimized3.svg?2ac458a8bb0a3b22241b1b760a697476);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.capsulmapbody {
+  height: 1300px;
+  width: 80%;
+  display: -webkit-box;
+  display: flex;
+  margin: 130px;
+  margin-top: 100px;
+  margin-bottom: 0;
+}
+
+.usermap {
+  width: 350px;
+  margin-top: 100px;
+  margin-left: -60px;
+}
+
+.photoviewbck {
+  background-color: 363636;
+}
+
 .aboutbody {
   height: 900px;
 }
@@ -279,6 +360,7 @@ div.container.mapposition {
 
 .createphoto {
   background-color: #515151;
+  height: 1500px;
 }
 
 .formpositon {
@@ -328,7 +410,7 @@ figure .imageform {
 
 #logo2 {
   width: 100%;
-  fill: #f4f4f4;
+  fill: #515151;
 }
 
 .loginbox h2 {
@@ -350,6 +432,25 @@ figure .imageform {
   -webkit-box-pack: start;
           justify-content: flex-start;
   overflow: scroll;
+  background-color: #f2f1f1;
+  border-radius: 3%;
+}
+
+.userphotocontainermap {
+  height: 900px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  align-content: center;
+  overflow: scroll;
+  background-color: #515151;
+  border-radius: 3%;
 }
 
 .userphotocontainer > .card {
